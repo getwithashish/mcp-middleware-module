@@ -1,7 +1,7 @@
 [project]
 name = "acme-mcp-auth"
 version = "0.1.0"
-description = "Keycloak scoped-token auth for FastMCP servers"
+description = "FastMCP middleware: JWT auth, scoped-tool authorization, audit logging"
 authors = [
     { name = "getwithashish", email = "77051732+getwithashish@users.noreply.github.com" },
 ]
@@ -28,9 +28,9 @@ dependencies = [
 dev = ["pytest>=8.0", "pytest-asyncio>=0.24", "ruff>=0.6", "mypy>=1.11"]
 
 [project.urls]
-Homepage = "https://github.com/getwithashish/acme-mcp-auth"
-Repository = "https://github.com/getwithashish/acme-mcp-auth"
-Changelog = "https://github.com/getwithashish/acme-mcp-auth/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/getwithashish/mcp-middleware-module"
+Repository = "https://github.com/getwithashish/mcp-middleware-module"
+Changelog = "https://github.com/getwithashish/mcp-middleware-module/blob/main/CHANGELOG.md"
 
 [build-system]
 requires = ["hatchling"]
