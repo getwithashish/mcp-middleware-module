@@ -1,4 +1,4 @@
-# mcp-middleware-module
+# mcp-middleware
 
 **Keycloak scoped-token authentication for FastMCP servers.**  
 A shared Python package that enforces JWT-based, tool-scoped access so every
@@ -30,17 +30,17 @@ MCP server in your organisation uses the same auth contract.
 
 ```bash
 # From a private package index (recommended)
-uv add acme-mcp-auth --index https://pypi.example.com/simple
+uv add mcp-middleware --index https://pypi.example.com/simple
 
 # Or as a git dependency (quick start)
-uv add "acme-mcp-auth @ git+ssh://git@github.com/getwithashish/mcp-middleware-module@v0.1.0"
+uv add "mcp-middleware @ git+ssh://git@github.com/getwithashish/mcp-middleware@v0.1.0"
 ```
 
 ### Wire it up
 
 ```python
 from fastmcp import FastMCP
-from acme_mcp_auth import McpAuth
+from mcp_middleware import McpAuth
 
 auth = McpAuth.from_env()
 
@@ -88,7 +88,7 @@ The package ships `TokenFactory` so teams can write integration tests without
 a running Keycloak:
 
 ```python
-from acme_mcp_auth.testing import TokenFactory
+from mcp_middleware.testing import TokenFactory
 
 factory = TokenFactory()
 auth = factory.auth()                          # McpAuth wired to test key
@@ -113,8 +113,8 @@ Test cases we cover in this repository (and you should too):
 
 | Option | When to use | Install command |
 |---|---|---|
-| **Private index** (recommended) | Standard for several teams | `uv add acme-mcp-auth --index https://…/simple` |
-| **Git tag** | Before an index exists | `uv add "acme-mcp-auth @ git+ssh://git@github.com/getwithashish/mcp-middleware-module@v0.1.0"` |
+| **Private index** (recommended) | Standard for several teams | `uv add mcp-middleware --index https://…/simple` |
+| **Git tag** | Before an index exists | `uv add "mcp-middleware @ git+ssh://git@github.com/getwithashish/mcp-middleware@v0.1.0"` |
 
 ### CI publishing
 
@@ -129,7 +129,7 @@ package index. Nobody publishes from a laptop.
 | New optional settings | **Minor** |
 | Fixes | **Patch** |
 
-Consumers use a compatible-release range, e.g. `acme-mcp-auth~=1.2`. Enable
+Consumers use a compatible-release range, e.g. `mcp-middleware~=1.2`. Enable
 Renovate or Dependabot so security fixes reach every repo quickly.
 
 ### Code ownership
@@ -158,8 +158,8 @@ approval.
 ## Development
 
 ```bash
-git clone https://github.com/getwithashish/mcp-middleware-module.git
-cd mcp-middleware-module
+git clone https://github.com/getwithashish/mcp-middleware.git
+cd mcp-middleware
 uv venv && source .venv/bin/activate
 uv sync --all-extras
 

@@ -20,7 +20,7 @@ class McpAuth:
     .. code-block:: python
 
         from fastmcp import FastMCP
-        from acme_mcp_auth import McpAuth
+        from mcp_middleware import McpAuth
 
         auth = McpAuth.from_env()
 

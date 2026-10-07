@@ -1,5 +1,5 @@
 [project]
-name = "acme-mcp-auth"
+name = "mcp-middleware"
 version = "0.1.0"
 description = "FastMCP middleware: JWT auth, scoped-tool authorization, audit logging"
 authors = [
@@ -28,9 +28,9 @@ dependencies = [
 dev = ["pytest>=8.0", "pytest-asyncio>=0.24", "ruff>=0.6", "mypy>=1.11"]
 
 [project.urls]
-Homepage = "https://github.com/getwithashish/mcp-middleware-module"
-Repository = "https://github.com/getwithashish/mcp-middleware-module"
-Changelog = "https://github.com/getwithashish/mcp-middleware-module/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/getwithashish/mcp-middleware"
+Repository = "https://github.com/getwithashish/mcp-middleware"
+Changelog = "https://github.com/getwithashish/mcp-middleware/blob/main/CHANGELOG.md"
 
 [build-system]
 requires = ["hatchling"]

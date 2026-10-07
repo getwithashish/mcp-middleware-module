@@ -4,7 +4,7 @@ Usage
 -----
 .. code-block:: python
 
-    from acme_mcp_auth.testing import TokenFactory
+    from mcp_middleware.testing import TokenFactory
 
     factory = TokenFactory()
     auth = factory.auth()                     # McpAuth wired to the test key

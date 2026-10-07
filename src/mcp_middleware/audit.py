@@ -6,7 +6,7 @@ import time
 from fastmcp.server.dependencies import get_access_token
 from fastmcp.server.middleware import Middleware, MiddlewareContext
 
-log = logging.getLogger("acme_mcp_auth.audit")
+log = logging.getLogger("mcp_middleware.audit")
 
 
 class AuditMiddleware(Middleware):

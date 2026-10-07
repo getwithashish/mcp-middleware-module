@@ -8,7 +8,7 @@ from fastmcp.server.auth.providers.jwt import JWTVerifier
 
 from .config import McpAuthSettings
 
-log = logging.getLogger("acme_mcp_auth")
+log = logging.getLogger("mcp_middleware")
 
 
 class ScopedToolTokenVerifier(JWTVerifier):

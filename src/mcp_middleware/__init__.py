@@ -1,4 +1,4 @@
-"""acme-mcp-auth: Keycloak scoped-token auth for FastMCP servers."""
+"""mcp-middleware: Keycloak scoped-token auth for FastMCP servers."""
 
 from .config import McpAuthSettings
 from .integration import McpAuth

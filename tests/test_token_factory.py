@@ -1,6 +1,6 @@
-"""Tests for acme-mcp-auth."""
+"""Tests for mcp-middleware."""
 
-from acme_mcp_auth.testing import TokenFactory
+from mcp_middleware.testing import TokenFactory
 
 
 def test_valid_token_success():

@@ -7,7 +7,7 @@ Run with::
 
 import pytest
 
-from acme_mcp_auth.testing import TokenFactory
+from mcp_middleware.testing import TokenFactory
 
 
 @pytest.fixture
@@ -74,7 +74,7 @@ async def test_malformed_tools_claim_rejected(factory):
 @pytest.mark.asyncio
 async def test_tool_invoke_grants_all_tools(factory):
     """Having 'tool:invoke' in the tools claim grants access to any tool."""
-    from acme_mcp_auth.checks import ALLOW_ALL
+    from mcp_middleware.checks import ALLOW_ALL
 
     auth = factory.auth()
     # Token grants only the wildcard — no specific tool name.

@@ -1,4 +1,4 @@
-"""Environment-driven settings for acme-mcp-auth."""
+"""Environment-driven settings for mcp-middleware."""
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -8,7 +8,7 @@ class McpAuthSettings(BaseSettings):
 
     Usage
     -----
-    >>> from acme_mcp_auth import McpAuthSettings
+    >>> from mcp_middleware import McpAuthSettings
     >>> settings = McpAuthSettings()  # reads from environment / .env
     """
 
