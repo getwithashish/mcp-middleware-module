@@ -1,7 +1,7 @@
 """JWT verification with custom claim checks (401 layer)."""
 
 import logging
-from typing import Any, Optional
+from typing import Optional
 
 from fastmcp.server.auth import AccessToken
 from fastmcp.server.auth.providers.jwt import JWTVerifier

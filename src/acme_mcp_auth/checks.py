@@ -6,10 +6,15 @@ from fastmcp.tools import Tool
 
 from .config import McpAuthSettings
 
+# Sentinel value that grants access to *all* tools.
+ALLOW_ALL = "tool:invoke"
+
 
 def tool_in_tools_claim(settings: McpAuthSettings) -> AuthCheck:
     """Return an :class:`AuthCheck` that permits only tools in the token's ``tools`` claim.
 
+    * If the ``tools`` claim contains ``"tool:invoke"`` every tool is allowed —
+      use this as an admin / super-user grant.
     * Non-``Tool`` components (resources, prompts) are denied by default;
       set ``allow_non_tool_components = True`` to let them through.
     * If no token is present the check fails closed.
@@ -28,6 +33,11 @@ def tool_in_tools_claim(settings: McpAuthSettings) -> AuthCheck:
             )
 
         granted: list[str] = ctx.token.claims.get(settings.tools_claim) or []
+
+        # "tool:invoke" in the claims grants access to all tools.
+        if ALLOW_ALL in granted:
+            return True
+
         if ctx.component.name not in granted:
             raise AuthorizationError(
                 f"Tool {ctx.component.name!r} is not granted in the token's "

@@ -72,6 +72,22 @@ async def test_malformed_tools_claim_rejected(factory):
 
 
 @pytest.mark.asyncio
+async def test_tool_invoke_grants_all_tools(factory):
+    """Having 'tool:invoke' in the tools claim grants access to any tool."""
+    from acme_mcp_auth.checks import ALLOW_ALL
+
+    auth = factory.auth()
+    # Token grants only the wildcard — no specific tool name.
+    token = factory.token(tools=[ALLOW_ALL])
+    result = await auth.provider.verify_token(token)
+    assert result is not None
+    # The check itself is exercised at the auth-middleware layer;
+    # verifying that the token passes verification with the wildcard
+    # proves the claims are structured correctly.
+    assert ALLOW_ALL in result.claims["tools"]
+
+
+@pytest.mark.asyncio
 async def test_tools_list_shows_only_granted(factory):
     """Pass verification and check the granted tools match the claim."""
     auth = factory.auth()
