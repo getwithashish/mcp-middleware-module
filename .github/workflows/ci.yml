@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with:
+          python-version: "3.12"
+      - run: uv sync --all-extras
+      - name: Ruff
+        run: uv run ruff check src tests
+      - name: mypy
+        run: uv run mypy src
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: uv sync --all-extras
+      - name: pytest
+        run: uv run pytest -v --tb=short
+
+  publish:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # for trusted publishing to PyPI
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with:
+          python-version: "3.12"
+      - run: uv sync --all-extras
+      - run: uv build
+      # Replace with your index's publish action (PyPI, CodeArtifact, etc.)
+      # - name: Publish to PyPI
+      #   run: uv publish
+      #   env:
+      #     UV_PUBLISH_TOKEN: ${{ secrets.PYPI_TOKEN }}

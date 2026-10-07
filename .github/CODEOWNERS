@@ -1,0 +1,6 @@
+# Default owner for the entire repo.
+* @getwithashish
+
+# Auth-critical files — changes must be reviewed by the platform/security team.
+src/acme_mcp_auth/verifier.py @getwithashish
+src/acme_mcp_auth/checks.py   @getwithashish
